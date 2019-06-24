@@ -1,0 +1,184 @@
+import requests
+import json
+import time
+import traceback
+import pandas as pd
+from urllib.parse import urlparse, parse_qsl
+from selenium import webdriver
+from coinphd.logger.log import log
+from coinphd.datasources.redis_db import redis
+from elasticsearch import helpers
+from elasticsearch.exceptions import NotFoundError
+from coinphd.datasources.elasticsearch import es
+
+
+def get_anthorize_code():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('lang=zh_CN.UTF-8')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    driver = webdriver.Chrome(options=chrome_options)
+
+    try:
+        url = f"{BASE_API}/oauth2/authorize?response_type=code&client_id={APP_KEY}&redirect_uri={REDIRECT_URL}"
+        driver.get(url)
+        time.sleep(5)
+
+        # 输入账号密码
+        driver.find_element_by_xpath('//*[@id="userId"]').send_keys(USERNAME)
+        driver.find_element_by_xpath('//*[@id="passwd"]').send_keys(PASSWORD)
+
+        # 点击登录
+        time.sleep(2)
+        driver.find_element_by_xpath('//*[@id="outer"]/div/div[2]/form/div/div[2]/div/p/a[1]').click()
+
+        # 等待授权成功
+        time.sleep(5)
+        url = driver.current_url
+
+        # 获取code参数
+        parsed_url = urlparse(url)
+        query = dict(parse_qsl(parsed_url.query))
+        code = query["code"]
+
+        log.info(f"获取anthorize_code:{code}")
+        return code
+    except Exception as e:
+        traceback.print_exc()
+        log.error(e)
+        return False
+    finally:
+        driver.quit()
+
+
+def get_access_token(code):
+    try:
+        url = f"{BASE_API}/oauth2/access_token"
+        response = requests.post(url, params={
+            "client_id": APP_KEY,
+            "client_secret": APP_SECRET,
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": REDIRECT_URL,
+        })
+
+        data = json.loads(response.text)
+        access_token = data["access_token"]
+        redis_instance.set(redis_key, access_token, ex=60 * 60 * 12)
+        log.info(f"获取access_token:{access_token}")
+        return access_token
+
+    except Exception as e:
+        traceback.print_exc()
+        log.error(e)
+        return False
+
+
+def get_data(access_token, since_id=0):
+    url = f"{BASE_API}/2/statuses/home_timeline.json?access_token={access_token}&since_id={since_id}"
+    response = requests.get(url)
+    return json.loads(response.text)["statuses"]
+
+
+def date_to_timestamp(time_string, from_format='%a %b %d %H:%M:%S +0800 %Y'):
+    timeArray = time.strptime(time_string, from_format)
+    timestamp = time.mktime(timeArray)
+    return int(timestamp)
+
+
+if __name__ == "__main__":
+    # weibo配置
+    APP_KEY = '**********'
+    APP_SECRET = '*******************'
+    REDIRECT_URL = 'http://www.**********.com'
+    BASE_API = 'https://api.weibo.com'
+    USERNAME = "*************"
+    PASSWORD = "*************"
+
+    # Es参数
+    _index = "l_message_weibo"
+    _doc_type = "_doc"
+    Es = es()
+
+    redis_instance = redis.instance()
+    redis_key = f"C:S:sina:access_token:{APP_KEY}"
+    access_token = redis_instance.get(redis_key)
+    if access_token:
+        access_token = access_token.decode("utf-8")
+    else:
+        anthorize_code = get_anthorize_code()
+        if not anthorize_code:
+            log.error(f"获取anthorize_code失败")
+            exit()
+
+        access_token = get_access_token(anthorize_code)
+        if not access_token:
+            log.error(f"获取access_token失败")
+            exit()
+
+    # 获取微博关注数据
+    datas = get_data(access_token)
+
+    # 查询最新一条记录
+    lastTime = 0
+    try:
+        condition = {
+            "size": "1",
+            "sort": [
+                {"publish_time": {"order": "desc"}}
+            ],
+        }
+        s = Es.search(index=_index, body=condition)
+        lastTime = s["hits"]["hits"][0]["_source"]["publish_time"]
+    except NotFoundError:
+        pass
+
+    # 转换数据
+    _body = []
+    tags = pd.read_excel('/data/coinphd/ai/coinphd/article/weibo_tag.xlsx')
+    for m in datas:
+        # 获取时间戳
+        ts = date_to_timestamp(m["created_at"])
+
+        # 获取标签以及权重
+        tag_row = tags.loc[tags['名称'] == m["user"]['name']].fillna('nan').values
+        tag = []
+        rank = 0
+        if tag_row.any():
+            tag_row = tag_row.flatten()
+            rank = tag_row[5]
+            tag_row = tag_row[1:5]
+            tag = list(tag_row[tag_row != 'nan'])
+
+        # 过滤重复的数据
+        if lastTime >= ts:
+            continue
+
+        # 获取图片
+        pic_urls = []
+        for pic in m["pic_urls"]:
+            for p in pic:
+                pic_urls.append(pic[p])
+
+        _body.append({'_index': _index, '_type': _doc_type, '_id': m["id"], '_source': {
+            "id": m["id"],
+            "title": None,
+            "content": m["text"],
+            "t_title": None,
+            "t_content": None,
+            "pic_urls": pic_urls,
+            "tags": tag,
+            "rank": rank,
+            "source_name": f"新浪微博:{m['user']['name']}",
+            "source_url": None,
+            "publish_time": ts
+        }})
+
+    # log.info(_body)
+
+    # 存入es
+    if len(_body):
+        helpers.bulk(Es, _body)
+        log.info(f"写入成功{len(_body)}条")
+    else:
+        log.info(f"没有找到更新的数据")
