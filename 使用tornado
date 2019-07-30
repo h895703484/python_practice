@@ -1,0 +1,157 @@
+import json
+import sys
+import asyncio
+import os
+import re
+import datetime
+import time
+import pandas as pd
+import tornado.escape
+import tornado.ioloop
+import tornado.options
+import tornado.web
+import tornado.httpserver
+from coinphd.logger.log import log
+import tornado.template
+import tornado.websocket
+from tornado import gen
+from tornado.concurrent import run_on_executor
+from concurrent.futures import ThreadPoolExecutor
+import traceback
+from coinphd.datasources.influxdb import influxdb
+from coinphd.datasources.redis_db import redis
+from coinphd.datasources.elasticsearch import es, querySql
+from coinphd.search.search import get_baidu_search, search
+
+# set default port
+port = 8090
+
+
+class Application(tornado.web.Application):
+    def __init__(self):
+        handlers = [
+            (r"/query/article", ArticleHandler),
+            (r"/query/health", HealthHandler),
+            (r"/query/kline", KlineHandler),
+            (r"/query/searches", SearcheHandler),
+            (r"/query/source_count", SourceCountHandler),
+            (r"/query/new_coin", NewCOINHandler)
+        ]
+        settings = dict(
+            cookie_secret="__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
+            template_path=os.path.join(os.path.dirname(__file__), "templates"),
+            static_path=os.path.join(os.path.dirname(__file__), "static"),
+            xsrf_cookies=False,
+        )
+
+        settings['debug'] = True
+        log.info("application init finished")
+        tornado.web.Application.__init__(self, handlers, **settings)
+
+
+class ArticleHandler(tornado.web.RequestHandler):
+    executor = ThreadPoolExecutor(200)
+
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS')
+
+    @gen.coroutine
+    def get(self):
+        ret = {"status": "ERROR", "result": "PARAM ERROR"}
+        self.set_header('Content-Type', 'application/json; charset=UTF-8')
+        script = self.get_argument("script", None)
+
+        try:
+
+            if not script:
+                self.write(json.dumps(ret))
+                return
+
+            script = yield self.get_doing(script)
+
+            ret['status'] = "OK"
+            ret['result'] = script
+        except Exception as e:
+            log.error(e)
+            traceback.print_exc()
+            ret["result"] = "SERVER ERROR"
+        self.write(json.dumps(ret))
+        self.finish()
+
+    @run_on_executor
+    def get_doing(self, script):
+        cmd_start = f"/opt/conda/bin/python3.7 /data/coinphd/ai/coinphd/article/{script}"
+        os.system(cmd_start)
+        return cmd_start
+
+
+class NewCOINHandler(tornado.web.RequestHandler):
+    executor = ThreadPoolExecutor(200)
+
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS')
+
+    @gen.coroutine
+    def get(self):
+        ret = {"status": "ERROR", "result": "PARAM ERROR"}
+        self.set_header('Content-Type', 'application/json; charset=UTF-8')
+        result = yield self.get_doing()
+        ret['status'] = "OK"
+        ret['result'] = result
+
+        self.write(json.dumps(ret))
+        self.finish()
+
+    @run_on_executor
+    def get_doing(self):
+        redis_instance = redis().instance()
+        today = datetime.datetime.now().strftime('%Y%m%d')
+        yesterday = (datetime.datetime.now() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
+        result = {today: [], yesterday: []}
+        try:
+            for day in [today, yesterday]:
+                coin_key = f'C:L:new:coin:{day}'
+                coin_list = redis_instance.lrange(coin_key, 0, -1)
+                df = pd.DataFrame([json.loads(x.decode('utf8')) for x in coin_list])
+                if df.empty:
+                    continue
+                for coin in set(df['coin']):
+                    result[day].append({'coin': coin,
+                                        'time': int(time.mktime(time.strptime(day, '%Y%m%d'))),
+                                        'url': list(df.loc[df['coin'] == coin, 'url']),
+                                        'title': list(set(df.loc[df['coin'] == coin, 'title']))
+                                        })
+            result[f'{today}_count'] = len(result[today])
+            result[f'{yesterday}_count'] = len(result[yesterday])
+            return result
+        except Exception as e:
+            traceback.print_exc()
+            log.error(e)
+
+
+class HealthHandler(tornado.web.RequestHandler):
+    def get(self):
+        ret = dict()
+        ret['status'] = "up"
+        self.set_header('Content-Type', 'application/json; charset=UTF-8')
+        self.write(json.dumps(ret))
+
+
+def create_server(port):
+    log.info("server port {} starting...".format(port))
+    http_server = tornado.httpserver.HTTPServer(Application())
+    http_server.listen(port)
+    tornado.ioloop.IOLoop.instance().start()
+
+
+# start a service
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        log.warning("please input port: ex. 8090")
+    else:
+        port = sys.argv[1]
+    create_server(port)
