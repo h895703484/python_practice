@@ -1,0 +1,15 @@
+asyncio
+lazy-object-proxy
+matplotlib==3.3.4
+mccabe==0.6.1
+numpy==1.19.2
+pandas==0.25.3
+paramiko==2.7.2
+Pillow==8.2.0
+pylint==2.11.0
+pymongo==3.11.0
+requests==2.24.0
+selenium==3.141.0
+six==1.15.0
+urllib3==1.25.10
+wrapt==1.12.1

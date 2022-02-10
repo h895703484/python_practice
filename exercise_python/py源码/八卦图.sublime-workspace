@@ -1,0 +1,688 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"cloa",
+				"colspan	Attr"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"font-st",
+				"font-style"
+			],
+			[
+				"rem",
+				"remove	.remove()"
+			],
+			[
+				"remc",
+				"removeClass	.removeClass()"
+			],
+			[
+				"sli",
+				"slideUp	.slideUp()"
+			],
+			[
+				"vis",
+				"visibility	Style CSS"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"res",
+				"resize	.resize()"
+			],
+			[
+				"u",
+				"underline"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS"
+			],
+			[
+				"cleari",
+				"clearInterval(${0:intervalID})	Window"
+			],
+			[
+				"dis",
+				"disabled	Event"
+			],
+			[
+				"getd",
+				"getDay()	Date"
+			],
+			[
+				"getm",
+				"getMonth()	Date"
+			],
+			[
+				"list-s",
+				"list-style"
+			],
+			[
+				"bo",
+				"box-shadow"
+			],
+			[
+				"sc",
+				"scroll	Event"
+			],
+			[
+				"mous",
+				"mousedown	.mousedown()"
+			],
+			[
+				"st",
+				"status	Window"
+			],
+			[
+				"index",
+				"indexOf(${0:searchValue})	String"
+			],
+			[
+				"get",
+				"getElementById(${0:id})	Element"
+			],
+			[
+				"if",
+				"iframe	Tag"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"cu",
+				"cursor = 'auto'	Style CSS"
+			],
+			[
+				"font-l",
+				"font-style"
+			],
+			[
+				"magr",
+				"margin-top"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"f6",
+				"f6473c"
+			],
+			[
+				"toggle",
+				"toggle	.toggle()"
+			],
+			[
+				"con",
+				"continue;"
+			],
+			[
+				"text",
+				"textarea	<textarea>"
+			],
+			[
+				"fonts-",
+				"font-size"
+			],
+			[
+				"ch",
+				"change	.change()"
+			],
+			[
+				"op",
+				"opacity	Style CSS"
+			],
+			[
+				"1c",
+				"1cad81"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"re",
+				"ready	$(document).ready"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"dea",
+				"dashed"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"pa",
+				"placeholder	Attr"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"tra",
+				"transform"
+			],
+			[
+				"border-c",
+				"border-collapse"
+			],
+			[
+				"par",
+				"parent	.parent()"
+			],
+			[
+				"back-c",
+				"background-color"
+			],
+			[
+				"va",
+				"value	Attr"
+			],
+			[
+				"getle",
+				"getElementById(${0:id})	Element"
+			],
+			[
+				"sett",
+				"setTimeout(${0:func}, delay)	Window"
+			],
+			[
+				"p",
+				"parseInt(${0:string}, radix)	Window"
+			],
+			[
+				"a",
+				"animate	.animate() with callback"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/Users/Administrator/Desktop/前端代码/螺旋丸.html",
+			"settings":
+			{
+				"buffer_size": 6990,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "inp",
+		"selected_items":
+		[
+			[
+				"inp",
+				"Package Control: Install Package"
+			],
+			[
+				"vi",
+				"View: Toggle Menu"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"pis",
+				"Package Control: Install Package"
+			],
+			[
+				"pi",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Users/Administrator/Desktop/时光穿梭(1)/时光穿梭/css"
+	],
+	"file_history":
+	[
+		"/D/Users/Administrator/Desktop/前端代码/时光穿梭(1)/时光穿梭/css/style.css",
+		"/D/Users/Administrator/Desktop/前端代码/时光穿梭(1)/时光穿梭/index.html",
+		"/D/Users/Administrator/Desktop/前端代码/时光穿梭(1)/时光穿梭/js/script.js",
+		"/D/Users/Administrator/Desktop/前端代码/时光穿梭(1)/时光穿梭/js/three.min.js",
+		"/D/Users/Administrator/Desktop/龙卷风粒子/demo.html",
+		"/D/Users/Administrator/Desktop/水果忍者.html",
+		"/D/Users/Administrator/Desktop/生日快乐.html",
+		"/D/Users/Administrator/Desktop/时光穿梭(1)/时光穿梭/index.html",
+		"/D/Users/Administrator/Desktop/时光穿梭(1)/时光穿梭/css/style.css",
+		"/D/Users/Administrator/Desktop/时光穿梭(1)/时光穿梭/js/script.js",
+		"/D/Users/Administrator/Desktop/喷泉/喷泉.html",
+		"/D/Users/Administrator/Desktop/前端代码/demo.html",
+		"/D/Users/Administrator/Desktop/前端代码/程序员送你的惊喜一小部分(1)/程序员送你的惊喜一小部分/爱心树/index.html",
+		"/D/Users/Administrator/Desktop/各种代码/叮当猫.py",
+		"/C/Users/Administrator/Desktop/源码/全民飞机大战/飞机大战.html",
+		"/C/Users/Administrator/Desktop/爱心.html",
+		"/C/Users/Administrator/Desktop/3D相册.html",
+		"/C/Users/Administrator/Desktop/index.html",
+		"/C/Users/Administrator/Desktop/新年快乐.html",
+		"/C/Users/Administrator/Desktop/demo.html",
+		"/C/Users/Administrator/Desktop/飞机大战.html",
+		"/C/Users/Administrator/Desktop/源码/飞机大战/飞机大战/飞机大战.html",
+		"/C/Users/Administrator/Desktop/源码/抽象画布可视化.html",
+		"/C/Users/Administrator/Desktop/源码/球形态爱你/index.html",
+		"/C/Users/Administrator/Desktop/程序员送你的惊喜一小部分/抖音罗盘/动态时钟.html",
+		"/C/Users/Administrator/Desktop/动态时钟.html",
+		"/C/Users/Administrator/AppData/Local/Temp/Rar$DRa0.644/index.html",
+		"/C/Users/Administrator/Desktop/贪吃蛇.html",
+		"/C/Users/Administrator/Desktop/html5_snake/index.html",
+		"/C/Users/Administrator/Desktop/程序员送你的惊喜一小部分/给你制作的动态相册/动态相册.html",
+		"/C/Users/Administrator/Desktop/520表白/表白.html",
+		"/C/Users/Administrator/Desktop/俄罗斯方块/index.html",
+		"/C/Users/Administrator/Desktop/扫雷小游戏.html",
+		"/C/Users/Administrator/Desktop/jquery.min.js",
+		"/C/Users/Administrator/Desktop/源码/3D旋转木马播放相册/index.html",
+		"/C/Users/Administrator/Desktop/js/jquery.min.js",
+		"/C/Users/Administrator/Desktop/冰冻花.html",
+		"/C/Users/Administrator/Desktop/css/style.css",
+		"/C/Users/Administrator/Desktop/js/index.js",
+		"/C/Users/Administrator/AppData/Local/Temp/Rar$DRa0.742/index.html",
+		"/C/Users/Administrator/AppData/Local/Temp/Rar$DRa0.040/index.html",
+		"/C/Users/Administrator/Desktop/3D旋转木马播放相册/index.html",
+		"/C/Users/Administrator/Desktop/前端学习",
+		"/C/Users/Administrator/Desktop/价值3w的前端电子书/前端学习.html",
+		"/C/Users/Administrator/Desktop/价值3w的前端电子书/一起自学.url",
+		"/C/Users/Administrator/Desktop/满屏泡泡.html",
+		"/C/Users/Administrator/Desktop/js/dat.gui.min.js",
+		"/C/Users/Administrator/Desktop/表白.html",
+		"/C/Users/Administrator/Desktop/写给女友的情书/情书.html",
+		"/C/Users/Administrator/Desktop/女友的情书/情书.html",
+		"/C/Users/Administrator/Desktop/css/zzsc.css",
+		"/C/Users/Administrator/Desktop/js/zzsc.js",
+		"/C/Users/Administrator/Desktop/时钟壁纸.html",
+		"/C/Users/Administrator/Desktop/时钟壁纸1.html",
+		"/C/Users/Administrator/Desktop/源码/js卡通人物爱心表白-爱心形状浮动特效/css/love.css",
+		"/C/Users/Administrator/Desktop/源码/js卡通人物爱心表白-爱心形状浮动特效/js/love.js",
+		"/C/Users/Administrator/Desktop/源码/js卡通人物爱心表白-爱心形状浮动特效/爱心表白.html",
+		"/C/Users/Administrator/Desktop/爱心树/情书.html",
+		"/C/Users/Administrator/Desktop/爱心树/index.html",
+		"/D/Windows 10 Documents/Desktop/会飞的千纸鹤.html",
+		"/D/Windows 10 Documents/Desktop/css/style.css",
+		"/D/Windows 10 Documents/Desktop/js/index.js",
+		"/D/Windows 10 Documents/Desktop/js/p5.min.js",
+		"/D/Windows 10 Documents/Desktop/index.html",
+		"/D/Windows 10 Documents/Desktop/炫酷特效.html",
+		"/D/Windows 10 Documents/Desktop/新建文本文档.html",
+		"/D/Windows 10 Documents/Desktop/抖音罗盘/js/demo.js",
+		"/D/Windows 10 Documents/Desktop/抖音罗盘/动态时钟.html",
+		"/D/Windows 10 Documents/Desktop/抖音罗盘/css/demo.css",
+		"/D/Windows 10 Documents/Desktop/抖音罗盘/js/demo(1).js",
+		"/D/Windows 10 Documents/Desktop/抖音罗盘/css/demo(1).css",
+		"/D/Windows 10 Documents/Desktop/源码/爱心球.html",
+		"/D/Windows 10 Documents/Desktop/动态时钟.html",
+		"/D/Windows 10 Documents/Desktop/龙卷风粒子旋涡.html",
+		"/D/Windows 10 Documents/Desktop/demo.html",
+		"/D/Windows 10 Documents/Desktop/飞机大战.html",
+		"/D/Windows 10 Documents/Desktop/css/zzsc.css",
+		"/D/Windows 10 Documents/Desktop/js/zzsc.js",
+		"/D/Windows 10 Documents/Desktop/表白.html",
+		"/D/Windows 10 Documents/Desktop/爱心表白.html",
+		"/D/Windows 10 Documents/Desktop/源码/命悬一线小游戏/命悬一线.html",
+		"/D/Windows 10 Documents/Desktop/全民飞机大战.html",
+		"/D/Windows 10 Documents/Desktop/用代码写相册/用代码写相册_embed.css",
+		"/D/Windows 10 Documents/Desktop/贪吃蛇.html",
+		"/D/Windows 10 Documents/Desktop/3D相册/3D相册.html",
+		"/D/Windows 10 Documents/Desktop/3D相册/css/style.css",
+		"/D/Windows 10 Documents/Desktop/抽象画布可视化.html",
+		"/D/Windows 10 Documents/Desktop/3D烟花特效.HTML",
+		"/D/Windows 10 Documents/Desktop/源码/球形态爱你/index.html",
+		"/D/Windows 10 Documents/Desktop/冰雪花飘落.html",
+		"/D/Windows 10 Documents/Desktop/web前端学习扣扣裙：895757445.html",
+		"/D/Windows 10 Documents/Desktop/web前端学习扣扣群：895757445.html",
+		"/D/Windows 10 Documents/Desktop/龙卷风.html",
+		"/D/Windows 10 Documents/Desktop/酷炫扑克牌动画特效/酷炫扑克牌动画特效.html",
+		"/D/Windows 10 Documents/Desktop/千纸鹤.html",
+		"/D/Windows 10 Documents/Desktop/旋转相册/表白相册.html",
+		"/D/Windows 10 Documents/Desktop/旋转相册/index.html",
+		"/D/Windows 10 Documents/Desktop/js/snow.js",
+		"/D/Windows 10 Documents/Desktop/js/jquery.min.js",
+		"/D/Windows 10 Documents/Desktop/火柴人.zip",
+		"/D/Windows 10 Documents/Desktop/皮卡丘.html",
+		"/D/Windows 10 Documents/Desktop/奔跑吧！兔子.html",
+		"/D/Windows 10 Documents/Desktop/奔跑吧兔子/index.html",
+		"/D/Sublime Text 3/Data/Packages/Default/Default (Windows).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 96.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"']]\n",
+			".load1 ",
+			"loader",
+			"text",
+			"5",
+			"(\"\")",
+			"div",
+			"40px",
+			"color",
+			"SWFUpload_0",
+			"<li>\n				<div class=\"jhNewsImg\"><img src=\"images/jhNewsImg01.png\" alt=\"\"></div>\n				<div class=\"jhNewsText\">\n					<h4>首都经济贸易大学超市开始免费送货了！</h4>\n					<p>由京华之舟和崇诚物业联合开发的校园服务系统正式上线，内容包括超市和纪念品店，大大提高了校园商超服务质量。9月1日开学之际，首经贸超市在校园内开展了路演宣传活动。截止到9月6日时间，关注人数已破800人次...</p>\n					<span>时间：2015年9月1日</span>\n					<a href=\"JinghuaNewsClock.html\">查看详细</a>\n				</div>\n			</li>",
+			"width",
+			"input0",
+			"YunFei11",
+			"JingKouKouAn1",
+			"YunShuFangShi2",
+			"运输方式",
+			"YunShuFangShi1",
+			"input",
+			"newKPbox",
+			"uploadbox",
+			"replyHDYL",
+			"KG",
+			"shadow",
+			"jscrollu",
+			"().",
+			"window",
+			"mapc",
+			"mapview",
+			"mapClick",
+			"mapR02",
+			"atCoordinate",
+			"img",
+			"flow",
+			"black",
+			"div",
+			"right",
+			"right_sword",
+			"40",
+			"Flow",
+			"createFlow",
+			"width:0",
+			"width:0px",
+			"DD_mask",
+			"overflow",
+			"h4",
+			"A4",
+			"1",
+			"fps",
+			"draw",
+			"this",
+			"this\n",
+			"Draw\n",
+			"FPS\n",
+			"fps\n",
+			"});\n",
+			" <",
+			"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>2d游戏</title>\n	<link rel=\"stylesheet\" href=\"css/map.css\">\n	<script src=\"js/sea.js\"></script>\n	<!-- <script src=\"js/jquery-1.7.2.min.js\" type=\"text/javascript\"></script> -->\n</head>\n<body>\n\n<div class=\"mapBox\">\n	<div class=\"mapImg\">\n		\n	</div>\n	<div class=\"people\"></div>\n</div>\n\n\n\n\n\n\n\n\n\n\n	<script type=\"text/javascript\">\n        seajs.use([\"mapXY\",\"jquery\"], function (mapXY,$) {\n        /*	mapXY.map.initBind();*/\n        	/*mapXY.map.mapEvent.clickMinMap();*/\n        	mapXY.table.init();\n\n        	$(\".mapImg\").mousemove(function(e) {\n        	var	x= e.pageX-$(this).offset().left / 10 + 1;\n                e.pageY-$(this).offset().top / 10 + 1;\n        	});\n		});\n    </script>\n</body>\n</html>",
+			"eventCall",
+			"!=",
+			"h",
+			"define(function (require, exports, module) {\n    var $ = require(\"jquery\");//引用jQuery\n    /*当前地图对象坐标的值*/\n    var mapX_Y= {\n    	getLocation : {\n    		x : 0,\n    		y : 0\n    	},\n		mapBox:$(\".mapBox\"),\n		mapImg:$(\".mapImg\"),\n		box:$(\".box\"),\n	    initBind:function(){//初始化模块绑定点击事件\n	    	mapX_Y.mapImg.click(mapX_Y.mapEvent.clickBigMap);\n	    },\n	    mapEvent: {\n	    	clickBigMap : function(e){//初始化模块弹出窗口的坐标值\n		    	mapX_Y.getLocation.x=e.pageX-$(this).offset().left;\n		    	mapX_Y.getLocation.y=e.pageY-$(this).offset().top;\n		    	people.peopleAction(mapX_Y.getLocation.x,mapX_Y.getLocation.y);\n	    	},\n	    	clickMinMap : function(){\n	    		alert(\"点击了小地图\");\n	    	}\n	    }\n\n\n\n\n    };\n     /*当前人物对象坐标的值*/\n     var people={\n     	people:$(\".people\"),\n     	currentLoction:{\n     		x : 0,\n     		y : 0\n     	},\n     	peopleAction:function(x,y){\n     		alert(x + \" \" + y);\n     		/*mapX_Y.mapImg.animate({\"left\": ,\"top\":mapX_Y.alerts.Y-people.peopleX_Y.peopleY },500);*/\n     	}\n     }\n	return {\n		map : mapX_Y,\n		person : people\n	};\n\n});",
+			"define(function (require, exports, module) {\n    var $ = require(\"jquery\");//引用jQuery\n    /*当前地图对象坐标的值*/\n    var mapX_Y={\n    	clickLocation : {\n    		x : 0,\n    		y : 0\n    	},\n		mapBox:$(\".mapBox\"),\n		mapImg:$(\".mapImg\"),\n		box:$(\".box\"),\n	    clicks:function(){//初始化模块绑定点击事件\n	    	mapX_Y.mapImg.click(mapX_Y.alerts);\n	    },\n	    alerts:function(e){//初始化模块弹出窗口的坐标值\n	    	x=e.pageX-$(this).offset().left;\n	    	y=e.pageY-$(this).offset().top;\n	/*    	/*mapX_Y.box.text(X+\",\"+Y);*/\n	    	people.peopleAction;\n	    	alert(x);*/\n	    	\n	    }\n\n\n\n    };\n     /*当前人物对象坐标的值*/\n     var people={\n     	people:$(\".people\"),\n     	peopleX_Y:function(){\n     		var peopleX=250;\n     		var peopleY=250;\n     	},\n     	peopleAction:function(){\n     		alert(people.peopleX_Y.peopleX);\n     		/*mapX_Y.mapImg.animate({\"left\": ,\"top\":mapX_Y.alerts.Y-people.peopleX_Y.peopleY },500);*/\n     	}\n     }\n\n\n\n\n\n\n\n	return mapX_Y;\n	return people;\n\n});",
+			" $(\"#but\").click(function(){\n        	alert(1);\n        });"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"height",
+			"0"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/Users/Administrator/Desktop/前端代码/螺旋丸.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1311.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "八卦图.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 50.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

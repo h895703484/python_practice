@@ -1,0 +1,5 @@
+安装python后是不能直接打开pygame源代码的
+
+打开命令cmd  输入pip install pygame 回车后
+等待自动下载模块，下载完成后即可运行代码
+
