@@ -5,14 +5,17 @@ import pymongo as pm
 import pandas as pd
 from bson.objectid import ObjectId
 
-host = '192.168.12.156'
-port = 27017
+host = '192.168.12.205'
+port = 28018
 myclient = pm.MongoClient(host=host, port=port, authSource='cloud', username='cloud', password='Pass1234')
 mydb = myclient['cloud']
 
 unit_col = mydb['assets_unit']
 device_col = mydb['assets_device']
-deviceid_list = ['61a5c26bfe33311e81d4573a', "61a590ccfe33311e81d4565f","61a9dbc87d290a184d84cdec","61a9dba27d290a184d84cddc","61ad6ea17d290a184d85357e"]
+deviceid_list = ['620ca69941d48b10ed0f6554', "620ca67541d48b10ed0f6546", "620ca61d41d48b10ed0f6514",
+                 "620ca5e041d48b10ed0f64eb", "620ca59741d48b10ed0f64d1", '620ca56441d48b10ed0f64c0',
+                 '620ca52a41d48b10ed0f64ab']
+
 final_data = []
 
 
@@ -34,7 +37,7 @@ def parse_param_type(p_data):
     if p_type == "boolean":
         res_value = random.choice([False, True])
     elif p_type == "enum":
-        res_value = random.randint(0, 3)
+        res_value = random.randint(0, len(p_data["enumValues"].values[0])-1)
     elif p_type == "string":
         res_value = "test_text"
     elif p_type == "number":
@@ -44,24 +47,30 @@ def parse_param_type(p_data):
     return res_value
 
 
-def get_params(model_id):
+def get_params(model_id, category_id):
     device_pramas = []
     model_col = mydb['assets_model']
     cat_col = mydb['assets_category']
-    model_data = model_col.find_one({"_id": ObjectId(model_id)})
-    cat_id = model_data['assetsCategoryId']
+    if model_id:
+        model_data = model_col.find_one({"_id": ObjectId(model_id)})
+        pd_model_data = pd.DataFrame(model_data['params'])
+    else:
+        model_data = {'groups': []}
+        pd_model_data = pd.DataFrame()
+    cat_id = category_id
     cat_data = cat_col.find_one({'_id': ObjectId(cat_id)})
     pd_cat_data = pd.DataFrame(cat_data['params'])
-    pd_model_data = pd.DataFrame(model_data['params'])
+
     params_list = get_params_list(cat_data['groups']) + get_params_list(model_data['groups'])
     for param_id in params_list:
         pc_data = pd_cat_data[pd_cat_data['id'] == param_id]
         pm_data = pd_model_data[pd_model_data['id'] == param_id] if not pd_model_data.empty else pd_model_data
         if pm_data.empty:
             if pc_data["type"].values[0] == "table":
-                for p in pc_data["tableData"].values[0]:
-                    p_value = parse_param_type(p)
-                    device_pramas.append({"key": p["code"], "name": p["name"], "value": p_value})
+                pass
+                # for p in pc_data["tableData"].values[0]:
+                #     p_value = parse_param_type(p)
+                #     device_pramas.append({"key": p["code"], "name": p["name"], "value": p_value})
             else:
                 key = pc_data["code"].values[0]
                 name = pc_data["name"].values[0]
@@ -69,9 +78,10 @@ def get_params(model_id):
                 device_pramas.append({"key": key, "value": value, "name": name})
         else:
             if pm_data["type"].values[0] == "table":
-                for p in pm_data["tableData"].values[0]:
-                    p_value = parse_param_type(p)
-                    device_pramas.append({"key": p["code"], "name": p["name"], "value": p_value})
+                pass
+                # for p in pm_data["tableData"].values[0]:
+                #     p_value = parse_param_type(p)
+                #     device_pramas.append({"key": p["code"], "name": p["name"], "value": p_value})
             else:
                 key = pm_data["code"].values[0]
                 name = pm_data["name"].values[0]
@@ -92,7 +102,7 @@ def get_data(res):
         # data = "// " + deviceName + ' \n  socket.emit("device_data", {"id": Date.now(), "data":' + json.dumps(
         #     array,ensure_ascii=False) + ', "did": "' + did + '", "mid": "' + mid + '", "orgId": "' + ownId + '"})'+'\n'
         # final_data.append(data)
-        res = get_params(unit['model'])
+        res = get_params(unit['model'], unit['type'])
         res["did"] = did
         res["orgId"] = ownId
         res["name"] = unit['name']
