@@ -5,16 +5,14 @@ import pymongo as pm
 import pandas as pd
 from bson.objectid import ObjectId
 
-host = '192.168.12.205'
-port = 28018
+host = '192.168.12.89'
+port = 27017
 myclient = pm.MongoClient(host=host, port=port, authSource='cloud', username='cloud', password='Pass1234')
 mydb = myclient['cloud']
 
 unit_col = mydb['assets_unit']
 device_col = mydb['assets_device']
-deviceid_list = ['620ca69941d48b10ed0f6554', "620ca67541d48b10ed0f6546", "620ca61d41d48b10ed0f6514",
-                 "620ca5e041d48b10ed0f64eb", "620ca59741d48b10ed0f64d1", '620ca56441d48b10ed0f64c0',
-                 '620ca52a41d48b10ed0f64ab']
+deviceid_list = ['621f25f5ed748778be748aab','621f2178ed748778be748a62']
 
 final_data = []
 
@@ -22,7 +20,7 @@ final_data = []
 def get_params_list(groups):
     params_list = []
     for r_params in groups:
-        if r_params['name'] in ['监测附加', '运行参数', '告警参数']:
+        if r_params['name'] in ['监测附加', '运行参数', '告警参数', '电能质量参数']:
             params_list += r_params['params']
     return params_list
 
@@ -37,11 +35,11 @@ def parse_param_type(p_data):
     if p_type == "boolean":
         res_value = random.choice([False, True])
     elif p_type == "enum":
-        res_value = random.randint(0, len(p_data["enumValues"].values[0])-1)
+        res_value = random.randint(0, len(p_data["enumValues"].values[0]) - 1)
     elif p_type == "string":
         res_value = "test_text"
     elif p_type == "number":
-        res_value = random.randint(0, 50)
+        res_value = random.randint(20, 50)
     elif p_type == "array":
         res_value = [1, 2, 3]
     return res_value
@@ -97,12 +95,12 @@ def get_data(res):
         deviceName = device['name'] + unit['name']
         array = [{'key': 'electricity', 'value': random.randint(20, 30)}]
         did = str(unit['_id'])
-        mid = unit['model']
+        mid = unit.get('model', '')
         ownId = 'admin'
         # data = "// " + deviceName + ' \n  socket.emit("device_data", {"id": Date.now(), "data":' + json.dumps(
         #     array,ensure_ascii=False) + ', "did": "' + did + '", "mid": "' + mid + '", "orgId": "' + ownId + '"})'+'\n'
         # final_data.append(data)
-        res = get_params(unit['model'], unit['type'])
+        res = get_params(mid, unit['type'])
         res["did"] = did
         res["orgId"] = ownId
         res["name"] = unit['name']

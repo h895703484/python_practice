@@ -6,14 +6,15 @@ from threading import Timer
 
 with open("device_data.json", "r", encoding='utf8') as f:
     device_data = json.load(f)
-url = "http://192.168.12.205:39094/v1/topics/device_data/messages"
+url = "http://192.168.12.89:39094/v1/topics/device_data/messages"
 
 
 # async def send_data():
 #     requests.post(url=url,data=)
 def send_data():
-    for data in device_data[-1:]:
+    for data in device_data:
         res=requests.post(url=url, json=data)
+        print(data.get("name"))
     t = Timer(5, send_data)
     t.start()
 
