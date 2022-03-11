@@ -2,8 +2,8 @@ import time, json, re
 import paramiko
 import pymongo as pm
 
-host = '192.168.12.156'
-port = 27017
+host = '192.168.12.205'
+port = 28018
 myclient = pm.MongoClient(host=host, port=port, authSource='cloud', username='cloud', password='Pass1234')
 mydb = myclient['cloud']
 mycol_name = mydb.list_collection_names()

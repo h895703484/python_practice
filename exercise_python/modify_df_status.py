@@ -3,8 +3,8 @@ import paramiko
 import pandas as pd
 import pymongo as pm
 
-host = '192.168.12.156'
-port = 27017
+host = '192.168.12.205'
+port = 28018
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -30,7 +30,7 @@ for r1 in res:
     did = r1["source"]["device"]
     port = dmock_json[dmock_json['dir'] == f"./data/{did}"]["port"].values
     if r1['connection']['Info']['address'] == '192.168.12.206':
-        p = port[0]
+        p = port[0] if port.any() else r1['connection']['Info']['port']
         col.update_many({'$and': [{'source.device': did}, {'deleted': False}]},
                         {'$set': {'connection.Info.port': f'{p}', 'connection.Info.address': '192.168.12.206',
                                   "isEnabled": True}})
